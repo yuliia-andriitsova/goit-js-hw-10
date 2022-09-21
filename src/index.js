@@ -14,6 +14,8 @@ searchInput.addEventListener('input', debounce(getCountryData, DEBOUNCE_DELAY));
 // getCountryData receives data (country array) from input;
 function getCountryData(event) {
   const countryName = event.target.value.trim();
+  resetMarkup(countryList);
+  resetMarkup(countryInfo);
   if (!countryName) {
     return;
   }
@@ -65,4 +67,9 @@ function markupCountries(countryData) {
       <span>${name.official}</span></div>`
     );
   });
+}
+
+// -- reset markup function before enter---
+function resetMarkup(element) {
+  element.innerHTML = '';
 }
